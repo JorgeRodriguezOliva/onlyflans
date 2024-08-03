@@ -1,7 +1,17 @@
 body {
-    background-color: blue;
+    background-color: rgb(227, 238, 168);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1{
-    background-color: aqua;
+.logo {
+    justify-content: center;
+    width: 20em;
+    height: 10em;
+}
+.logo2 {
+    width: 30em;
+    height: 30em;
 }
