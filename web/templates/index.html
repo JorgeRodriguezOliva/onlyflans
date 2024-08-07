@@ -4,17 +4,22 @@
 <div class="container" id="home">
     <h1>{{ mensaje }}</h1>
     <hr>
-    {% for p in productos %}
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
+        {% for p in productos %}
+        <div class="col-3" id="cartas">
             <div class="card h-100">
-                <img src="{{p.url}}" class="card-img-top" alt="foto">
-                <div class="card-body">
+                <img src="{{p.url}}" class="card-img-top" height="80%" alt="foto">
+                <div class="card-body" style="background-color: rgb(0, 48, 220);color: white;">
                     <h5 class="card-title">{{p.name}}</h5>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
+
+<!-- 
+<div class="row row-cols-1 row-cols-md-3" style="margin: 0% 20%;">
+    <div class="col">
+        <div class="card" style="width: 18rem; margin: 10% 0%;"> -->
