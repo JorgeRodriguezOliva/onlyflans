@@ -1,24 +1,20 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <title>WEB OnlyFlans</title>
-</head>
-<body>
-    <h1>Only Flans</h1>
-    <h2>{{message}}</h2>
-
-    <div>
-        <img class=logo src="{% static 'img/only.png' %}" />
-
+{% block content %}
+<div class="container" id="home">
+    <h1>{{ mensaje }}</h1>
+    <hr>
+    {% for p in productos %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{p.url}}" class="card-img-top" alt="foto">
+                <div class="card-body">
+                    <h5 class="card-title">{{p.name}}</h5>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <img class=logo2 src="https://s1.eestatic.com/2020/04/19/cocinillas/recetas/postres/azucar-leche-huevo_483712124_150563114_1706x960.jpg" alt="flan"/>
-    </div>
-
-</body>
-</html>
+    {% endfor %}
+</div>
+{% endblock %}

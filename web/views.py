@@ -1,28 +1,34 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse, JsonResponse
 
 
-def saludar_function(request):
-    return HttpResponse("Hola MUNDO!!!")
-
-# Create your views here.
-def hola(req):
-    return HttpResponse("INICIO APP")
-
-def hola_text(req):
-    return HttpResponse("Bienvenidos")
-
-def hola_json(req):
-    data = {
-        "message": "HULK!!!"
-    }
-    return JsonResponse(data)
-
-def hola_template(req):
+def home(req):
     context = {
-        "message": "Bienvenidos a utilizar un template dinámico con Only Flans!!!"
+        "message": "Bienvenidos a Only Flans",
+        "user": {"username": "Jorge", "password": 1234, "is_active": True},
+        "productos": [{"name": "postre_1", "url": "/static/img/foto1.jpg"},
+                      {"name": "postre_2", "url": "/static/img/foto2.jpg"},
+                      {"name": "postre_3", "url": "/static/img/foto3.jpg"},
+                      {"name": "postre_4", "url": "/static/img/foto4.jpg"},
+            {"name": "postre_5", "url": "/static/img/foto5.jpg"},
+            {"name": "postre_6", "url": "/static/img/foto6.jpg"},
+            {"name": "postre_7", "url": "/static/img/foto7.jpg"},
+            {"name": "postre_8", "url": "/static/img/foto8.jpg"},
+            {"name": "postre_9", "url": "/static/img/foto9.jpg"}
+        ]
     }
     return render(req, 'index.html', context)
+
+
+def acerca(req):
+    contex = {
+        "data": "Acerca de nosotros"
+    }
+    return render(req, 'about.html', contex)
+
+def bienvenido(req):
+    contex = {
+        "data": "Bienvenido"
+    }
+    return render(req, 'welcome.html', contex)
 

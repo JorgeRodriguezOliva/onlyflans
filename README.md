@@ -40,7 +40,7 @@ ONLYFLANS es una plataforma para vender y comprar postres caseros. Los usuarios 
 
    ```bash
    virtualenv venv
-   source venv/Scripts/activate
+    -m "
    ```
 
 3. Instala las dependencias:
