@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 def home(req):
     context = {
         "message": "Bienvenidos a Only Flans",
-        "user": {"username": "Jorge", "password": 1234, "is_active": True},
+        "user": {"username": "Jorge", "password": 1234, "is_active": False},
         "productos": [{"name": "postre_1", "url": "/static/img/foto1.jpg"},
                       {"name": "postre_2", "url": "/static/img/foto2.jpg"},
                       {"name": "postre_3", "url": "/static/img/foto3.jpg"},
