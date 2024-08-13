@@ -4,13 +4,14 @@
 <div class="container" id="home">
     <h1>{{ mensaje }}</h1>
     <hr>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for p in productos %}
-        <div class="col-3" id="cartas">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-md-3 g-4">
+        {% for p in flanes_publicos %}
+        <div class="col" id="cartas">
             <div class="card h-100">
-                <img src="{{p.url}}" class="card-img-top" height="80%" alt="foto">
-                <div class="card-body" style="background-color: gold;color:blue;">
-                    <h5 class="card-title">{{p.name}}</h5>
+                <img src="{{p.image_url}}" class="card-img-top" height="80%" alt="foto">
+                <div class="card-body" style="background-color: gold;color: blue;">
+                    <h4 class="card-title">{{p.name}}</h4>
+                    <h6 class="card-title">{{p.description | slice:":100"}}{% if p.description|length > 100 %}...{% endif %}</h6>
                 </div>
             </div>
         </div>
@@ -18,4 +19,3 @@
     </div>
 </div>
 {% endblock %}
-

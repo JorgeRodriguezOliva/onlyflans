@@ -1,22 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Flan, ContactForm
+from .forms import ContactFormForm, ContactModelForm
 
 
-def home(req):
-    context = {
-        "message": "Bienvenidos a Only Flans",
-        "user": {"username": "Jorge", "password": 1234, "is_active": False},
-        "productos": [{"name": "postre_1", "url": "/static/img/foto1.jpg"},
-                      {"name": "postre_2", "url": "/static/img/foto2.jpg"},
-                      {"name": "postre_3", "url": "/static/img/foto3.jpg"},
-                      {"name": "postre_4", "url": "/static/img/foto4.jpg"},
-            {"name": "postre_5", "url": "/static/img/foto5.jpg"},
-            {"name": "postre_6", "url": "/static/img/foto6.jpg"},
-            {"name": "postre_7", "url": "/static/img/foto7.jpg"},
-            {"name": "postre_8", "url": "/static/img/foto8.jpg"},
-            {"name": "postre_9", "url": "/static/img/foto9.jpg"}
-        ]
-    }
+def indice(req):
+    flanes_all = Flan.objects.all()
+    flanes_publicos = Flan.objects.filter(is_private=False)
+    context = {"user": {"username": "Jorge", "password": 1234, "is_active": False},
+            "flanes_publicos": flanes_publicos,
+            "flanes_all": flanes_all,
+            }
     return render(req, 'index.html', context)
 
 
@@ -26,9 +20,25 @@ def acerca(req):
     }
     return render(req, 'about.html', contex)
 
+
 def bienvenido(req):
-    contex = {
-        "data": "Bienvenido"
-    }
-    return render(req, 'welcome.html', contex)
+    flanes_privados = Flan.objects.filter(is_private=True)
+    return render(req, 'welcome.html', {"flanes_privados": flanes_privados})
+
+def contacto(request):
+    if request.method == 'POST':
+        form = ContactModelForm(request.POST) 
+        if form.is_valid():
+            ContactForm.objects.create(**form.cleaned_data) 
+            return HttpResponseRedirect('/exito')
+    else: 
+        form = ContactModelForm()    
+    return render(request, 'contactus.html', {'form':form})
+
+def exclusivos(req):
+    flanes_privados = Flan.objects.filter(is_private=True)
+    return render(req, 'exclusivos.html', {"flanes_privados": flanes_privados})
+
+def exito(request):
+    return render(request, 'success.html', {})
 

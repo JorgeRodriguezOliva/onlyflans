@@ -2,7 +2,37 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    <h2>Bienvenidos</h2>
-    <p>{{data}}</p>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-md-3 g-4" id="productos">
+        {% for p in flanes_privados %}
+        <div class="col" id="cartas">
+            <div class="card h-100">
+                <img src="{{p.image_url}}" class="card-img-top" height="80%" alt="foto">
+                <div class="card-body" style="background-color: gold;color: blue;">
+                    <h4 class="card-title">{{p.name}}</h4>
+                    <h6 class="card-title">{{p.description | slice:":100"}}{% if p.description|length > 100 %}...{% endif %}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
+
+
+<!-- <div class="row mt-4 mb-4" id="productos">
+    {% for p in flanes_privados %}
+    <div class="col-6 col-md-3">
+        <div class="card mb-4" styles="" id="producto">
+            <img src="{{ p.image_url }}" class="card-img-top" id="card_img_top" alt="..." height="180px">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ p.name }}
+                </h5>
+                <p class="card-text">
+                    {{ p.description|slice:":250" }}{% if p.description|length > 250 %}...{% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div> -->
