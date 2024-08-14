@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
 
@@ -7,7 +8,7 @@ urlpatterns = [
     path('acerca', views.acerca, name="acerca"),
     path('bienvenido', views.bienvenido, name="bienvenido"),
     path('exito', views.exito, name="exito"),
-    path('contacto', views.contacto, name="contacto"),
+    path('contacto', views.contacto, name="contacto")
 ]
 
 

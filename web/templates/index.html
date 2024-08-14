@@ -2,7 +2,21 @@
 {% load static %}
 {% block content %}
 <div class="container" id="home">
-    <h1>{{ mensaje }}</h1>
+    <div class="row">
+        <div class="col">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>
+                    Nuestros Productos
+                </h2>
+                <p>
+                    OnlyFlans nace en el año 2021 buscando entregar flanes de calidad.
+                </p>
+                <a href="{% url 'acerca' %}" class="btn btn.outline-light">
+                    Conoce más
+                </a>
+            </div>
+        </div>
+    </div>
     <hr>
     <div class="row row-cols-1 row-cols-xs-2 row-cols-md-3 g-4">
         {% for p in flanes_publicos %}

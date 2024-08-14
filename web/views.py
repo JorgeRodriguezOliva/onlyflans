@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Flan, ContactForm
 from .forms import ContactFormForm, ContactModelForm
-
+from django.contrib.auth.decorators import login_required
 
 def indice(req):
     flanes_all = Flan.objects.all()
@@ -20,7 +20,7 @@ def acerca(req):
     }
     return render(req, 'about.html', contex)
 
-
+@login_required
 def bienvenido(req):
     flanes_privados = Flan.objects.filter(is_private=True)
     return render(req, 'welcome.html', {"flanes_privados": flanes_privados})

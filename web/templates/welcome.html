@@ -2,6 +2,22 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>
+                    Beinvenido {{ user.get_username | upper }}
+                </h2>
+                <p>
+                    Tenemos una lista de productos exclusivos para ti. ¿Quieres conocer más?
+                </p>
+                <a href="{% url 'contacto' %}" class="btn btn.outline-light">
+                    Contáctanos
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="row row-cols-1 row-cols-xs-2 row-cols-md-3 g-4" id="productos">
         {% for p in flanes_privados %}
         <div class="col" id="cartas">
