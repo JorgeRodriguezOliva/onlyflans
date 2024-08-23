@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
+<div class="container texto">
     <div class="row">
         <div class="col">
-            <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <div class="px-5 py-3 text-white rounded-3" style="background-color: darkblue;">
                 <h2>
-                    Beinvenido {{ user.get_username | upper }}
+                    Bienvenido {{ user.get_username | upper }}
                 </h2>
                 <p>
                     Tenemos una lista de productos exclusivos para ti. ¿Quieres conocer más?
                 </p>
-                <a href="{% url 'contacto' %}" class="btn btn.outline-light">
+                <a href="{% url 'contacto' %}" class="btn btn.outline-light text-white">
                     Contáctanos
                 </a>
             </div>
@@ -22,10 +22,15 @@
         {% for p in flanes_privados %}
         <div class="col" id="cartas">
             <div class="card h-100">
-                <img src="{{p.image_url}}" class="card-img-top" height="80%" alt="foto">
+                <a href="{% url 'detalle' flan_uuid=p.flan_uuid %}">
+                    <img src="{{p.image_url}}" class="card-img-top" height="320px" alt="foto">
+                </a>
                 <div class="card-body" style="background-color: gold;color: blue;">
                     <h4 class="card-title">{{p.name}}</h4>
                     <h6 class="card-title">{{p.description | slice:":100"}}{% if p.description|length > 100 %}...{% endif %}</h6>
+                    <p>
+                        Precio: ${{p.price}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -35,20 +40,3 @@
 {% endblock %}
 
 
-<!-- <div class="row mt-4 mb-4" id="productos">
-    {% for p in flanes_privados %}
-    <div class="col-6 col-md-3">
-        <div class="card mb-4" styles="" id="producto">
-            <img src="{{ p.image_url }}" class="card-img-top" id="card_img_top" alt="..." height="180px">
-            <div class="card-body">
-                <h5 class="card-title">
-                    {{ p.name }}
-                </h5>
-                <p class="card-text">
-                    {{ p.description|slice:":250" }}{% if p.description|length > 250 %}...{% endif %}
-                </p>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div> -->

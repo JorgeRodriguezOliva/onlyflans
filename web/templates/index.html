@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container" id="home">
+<div class="container texto" id="home">
     <div class="row">
         <div class="col">
-            <div class="h-100 p-5 text-white bg-dark rounded-3">
-                <h2>
+            <div class="px-5 py-3 text-white rounded-3" style="background-color: darkblue;">
+                <h1>
                     Nuestros Productos
-                </h2>
+                </h1>
                 <p>
                     OnlyFlans nace en el año 2021 buscando entregar flanes de calidad.
                 </p>
-                <a href="{% url 'acerca' %}" class="btn btn.outline-light">
+                <a href="{% url 'acerca' %}" class="btn btn.outline-light text-white">
                     Conoce más
                 </a>
             </div>
@@ -22,10 +22,15 @@
         {% for p in flanes_publicos %}
         <div class="col" id="cartas">
             <div class="card h-100">
-                <img src="{{p.image_url}}" class="card-img-top" height="80%" alt="foto">
+                <a href="{% url 'detalle' flan_uuid=p.flan_uuid %}">
+                    <img src="{{ p.image_url }}" class="card-img-top" height="320px" alt="foto">
+                </a>
                 <div class="card-body" style="background-color: gold;color: blue;">
                     <h4 class="card-title">{{p.name}}</h4>
                     <h6 class="card-title">{{p.description | slice:":100"}}{% if p.description|length > 100 %}...{% endif %}</h6>
+                    <p>
+                        Precio: ${{p.price}}
+                    </p>
                 </div>
             </div>
         </div>

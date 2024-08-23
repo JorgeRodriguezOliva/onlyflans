@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column min-vh-100 bg-light">
+    <div class="row justify-content-center align-items-center"
+        style="height: 100vh; background-image: url('../static/img/bg_flan.jpg')">
+        <div class="col-md-8">
+            <h2 class="text-center mt-2 mb-4">Perfil en OnlyFlans</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: bolder;">Nombre:</label>
+                        {{ user.first_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: bolder;">Apellido:</label>
+                        {{ user.last_name}}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: bolder;">Email:</label>
+                        {{ user.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label" style="font-weight: bolder;">Biografía:</label>
+                    {{ user.profile.bio}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" style="font-weight: bolder;">Ubicación:</label>
+                    {{ user.profile.location}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" style="font-weight: bolder;">Fecha de
+                        Nacimiento (YYYY-MM-DD):</label>
+                    {{ user.profile.birth_date}}
+                </div>
+            </div>
+        </div>
+        <div class="mt-3 text-end">
+            <a href="{% url 'profile' %}" class="btn btn-primary">Editar perfil</a>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

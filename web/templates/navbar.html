@@ -9,10 +9,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li>
-                    <a class="nav-link active text-white" href="/">Jorge</a>
-
-                </li>
-                <li>
                     <a class="nav-link active text-white" href="{% url 'indice' %}">Inicio</a>
                 </li>
                 {% if user.is_authenticated %}
@@ -32,11 +28,22 @@
                         Iniciar sesión
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link btn btn-secondary text-white" href="{% url 'register'%}">
+                        Registrarse
+                    </a>
+                </li>
                 {% endif %}
-
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none">
+                    <a class="nav-link text-white" href="{% url 'profile_e' %}">
+                        Perfil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
                         {% csrf_token %}
                     </form>
                     <a class="nav-link btn btn-secondary text-white" href="#"

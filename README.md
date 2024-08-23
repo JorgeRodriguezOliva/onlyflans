@@ -15,17 +15,17 @@ ONLYFLANS es una plataforma para vender y comprar postres caseros. Los usuarios 
 
 - Registro e inicio de sesión de usuarios
 - Navegación de postres disponibles
-- Carrito de compras
-- Realización de pedidos
-- Gestión de pedidos por parte de los administradores
+- Postres reservaod a usurios registrados
 
 ### Instalación y Configuración
 
 #### Requisitos Previos
 
-- Python 3.x
+- Python 3.12.3
 - Pip (gestor de paquetes de Python)
 - Virtualenv (opcional, pero recomendado)
+- Django==5.0.7
+
 
 #### Pasos de Instalación
 
@@ -97,22 +97,40 @@ onlyflans/
 ├── manage.py
 ├── onlyflans/
 │   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   ├── wsgi.py
 ├── web/
 │   │__init__.py
 │   │── admin.py
+│   │── apps.py
+│   │── forms.py
 │   │── models.py
 │   │── views.py
 │   ├── urls.py
 |   ├── templates/
+│       ├── about.html
+│       ├── base.html
+│       ├── contactus.html
+│       ├── detalle.html
+│       ├── footer.html
+│       ├── header.html
 │       ├── index.html
-│       ├── curriculum.html
+│       ├── navbar.html
+│       ├── profile_e.html
+│       ├── profile_exito.html
+│       ├── profile.html
+│       ├── register.html
+│       ├── success.html
+│       ├── welcome.html
+|           ├── registration/
+│              ├── logger_out.html
+│              ├── login.html
 |   ├── static/
 │      ├── css/styles.css
 │      ├── js/index.js
-│      ├── ...
+│      ├── img/OnlyFlans.png
 ├── ...
 ```
 

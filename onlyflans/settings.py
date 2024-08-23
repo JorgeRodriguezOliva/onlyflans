@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 import os
 #import os STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
@@ -25,10 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-75hf%dzk6sc@r2g0srmvt)wm6&utm@ylvr$*b)6g3v_-(ckbwt'
+SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = 'django-insecure-75hf%dzk6sc@r2g0srmvt)wm6&utm@ylvr$*b)6g3v_-(ckbwt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+print(f'{config('TEST_ENV')}')
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
